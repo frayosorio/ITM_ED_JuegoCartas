@@ -7,6 +7,9 @@ import java.util.Random;
 
 public class FrmJuego extends javax.swing.JFrame {
 
+    //Crear las instancias de la clase JUGADOR
+    Jugador jugador1=new Jugador();
+    Jugador jugador2=new Jugador();
 
     public FrmJuego() {
         initComponents();
@@ -93,12 +96,11 @@ public class FrmJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRepartirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepartirActionPerformed
-        Carta c=new Carta(new Random());
+        jugador1.repartir();
+        jugador2.repartir();
         
-        pnlJugador1.removeAll();
-        c.mostrar(pnlJugador1, 10, 5);
-        
-        pnlJugador1.repaint();
+        jugador1.mostrar(pnlJugador1);
+        jugador2.mostrar(pnlJugador2);
     }//GEN-LAST:event_btnRepartirActionPerformed
 
     /**
