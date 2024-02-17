@@ -36,4 +36,39 @@ public class Jugador {
         pnl.repaint();
     }
 
+    public String getGrupos() {
+        String mensaje = "No se encontraron grupos";
+
+        //verificar que haya cartas
+        if (cartas[0] != null) {
+            //iniciar los contadores
+            int[] contadores = new int[NombreCarta.values().length];
+
+            //recorrer las cartas para contarlas de acuerdo a su nombre
+            for (Carta c : cartas) {
+                contadores[ c.ObtenerNombre().ordinal()]++;
+            }
+
+            //contar cuantos grupos se hallaron
+            int totalGrupos = 0;
+            for (int i = 0; i < contadores.length; i++) {
+                if (contadores[i] > 1) {
+                    totalGrupos++;
+                }
+            }
+
+            if (totalGrupos > 0) {
+                mensaje = "Los grupos encontrador fueron:\n";
+                for (int i = 0; i < contadores.length; i++) {
+                    if (contadores[i] > 1) {
+                        mensaje += Grupo.values()[ contadores[i]] + " de " + NombreCarta.values()[i] + "\n";
+                    }
+                }
+            }
+        } else {
+            mensaje = "No se han repartido cartas";
+        }
+        return mensaje;
+    }
+
 }
